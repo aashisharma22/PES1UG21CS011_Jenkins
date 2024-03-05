@@ -11,13 +11,17 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh './output'
+                // Intentionally causing an error in the Test stage
+                script {
+                    // This command will intentionally fail
+                    sh 'false'
+                }
             }
         }
 
         stage('Deploy') {
             steps {
-                becho 'Deploy'
+                echo 'Deploy'
             }
         }
     }
